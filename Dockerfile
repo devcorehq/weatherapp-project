@@ -1,13 +1,8 @@
 FROM node:13.12.0-alpine
-
-WORKDIR /usr/src/app
-
-COPY package*.json ./
-
+WORKDIR /app
+COPY package.json ./
+COPY package-lock.json ./
+#COPY package*.json ./
 RUN npm install
-
-RUN npm build
-
 COPY . .
-
-CMD [ "node" ] 
+RUN npm run build
